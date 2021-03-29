@@ -134,3 +134,12 @@ else
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Installation aborted.\n"
 printf "\e[0m"
 fi
+
+bashrc=$PREFIX/etc/bash.bashrc
+if grep "alias" $bashrc
+then
+echo "there is edited bashrc"
+else
+echo "there is no edit bashrc"
+sed -i 's@\bfi\b@fi\nalias ubuntu="cd ~\n./ubuntu-termux/startubuntu.sh"@g' $PREFIX/etc/bash.bashrc ;
+fi
